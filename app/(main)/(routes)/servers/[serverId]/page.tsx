@@ -2,7 +2,7 @@ import React from 'react'
 
 const ServerIdPage = () => {
   return (
-    <div className='text-white'>ServerIdPage</div>
+    <div className='md:pl-60 text-white'>ServerIdPage</div>
   )
 }
 

@@ -28,16 +28,16 @@ model Server {
   id String @id @default (uuid ())
   name String
   imageUrl String @db.Text 
-  inviteCode String @db.Text
-  profileld String
-  profile Profile @relation(fields: [profileld], references: [id], onDelete: Cascade)
+  inviteCode String @unique
+  profileId String
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   members Member[]
   channels channel[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  @@index([profileld])
+  @@index([profileId])
 }
 
 enum MemberRole {
