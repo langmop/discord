@@ -1,6 +1,6 @@
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
-import { Message } from "@prisma/client";
+import { DirectMessage } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -14,18 +14,16 @@ export async function GET(req: Request) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-
     if (!conversationId) {
       return new NextResponse("Bad Request", { status: 400 });
     }
 
-
-    let messages: Message[] = [];
+    let messages: DirectMessage[] = [];
 
     const MESSAGE_BATCH = 10;
 
     if (cursor) {
-      messages = await db.message.findMany({
+      messages = await db.directMessage.findMany({
         take: MESSAGE_BATCH,
         skip: 1,
         cursor: {
