@@ -75,11 +75,9 @@ export const MembersModal = () => {
       onOpen("members", { server: response.data });
     } catch (error) {
     } finally {
-      // setLoadingId("");
+      setLoadingId("");
     }
   };
-
-  console.log(loadingId, "nnnnnnn");
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
@@ -104,7 +102,6 @@ export const MembersModal = () => {
                 email: string;
               };
             }) => {
-              console.log(loadingId, member.id, loadingId == member.id, "nnnnnnnnnn111111");
               return (
                 <div key={member.id} className="flex items-center gap-x-2 mb-6">
                   <UserAvatar src={member?.profile?.imageUrl} />
