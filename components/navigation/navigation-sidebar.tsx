@@ -14,7 +14,7 @@ const NavigationSideBar = async () => {
   const profile = await currentProfile();
 
   if (!profile) {
-    return redirect("/login");
+    return redirect("/");
   }
 
   const servers = await db.server.findMany({
